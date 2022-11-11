@@ -9,6 +9,7 @@ DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 DiscreteRandomWalk1D = "3a17ab65-1df8-4577-9ed4-1aa8b93768dd"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
+SIR_partial_sweep = "c8305852-0c5a-45ac-81e9-60282a711cfa"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 TreeTools = "62f0eae3-8c0e-4032-a621-7756092209e5"
 
