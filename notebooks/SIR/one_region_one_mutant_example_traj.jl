@@ -118,7 +118,7 @@ let
 end
 
 # ╔═╡ 9eee5d0b-8acc-4df5-8155-f7f855a12587
-let
+p_SIR = let
 	tvals = range(simulation.tspan..., length=100)
 	SIR_wt = Dict(g => simulation[tvals, 1, g, 1] for g in (:S, :I, :R))
 	SIR_m = Dict(g => simulation[tvals, 1, g, 2] for g in (:S, :I, :R))
@@ -136,7 +136,26 @@ let
 		plot!(tvals, SIR_wt[g], label="$g", color=i)
 		plot!(tvals, SIR_m[g], label="", color=i, linestyle=:dash)
 	end
-	savefig(savedir * prefix * "SIR_vs_time.png")
+	savefig(savedir * prefix * "SIR_vs_time_g$(γ).png")
+	p
+end
+
+# ╔═╡ d3e5042d-2e1a-4278-b3ee-310c8cc289f8
+md"""
+### Estimating influenza prevalence any given week
+"""
+
+# ╔═╡ 0b3126f7-18e1-4b38-abdc-92fd94401f23
+fraction_infected_week = let
+	fraction_infected_year = .1
+	fraction_infected_year / 52
+end
+
+# ╔═╡ b134b497-cbd8-4c8d-a934-8ca593ce1880
+let
+	p = deepcopy(p_SIR)
+	p = hline!(p, [fraction_infected_week], line=(:black, :dash), label="")
+	savefig(savedir * prefix * "SIR_vs_time_g$(γ)_prevalenceline.png")
 	p
 end
 
@@ -147,8 +166,11 @@ end
 # ╟─a6c9b10c-3406-4d6f-925e-3f88b3bd5e6b
 # ╠═69321dc4-ab3e-4ab1-9c1b-072e43434e2e
 # ╠═241f9436-d49e-425f-b3df-58929f909701
-# ╟─347d642f-8c2e-4757-9f5f-a522bca883ef
+# ╠═347d642f-8c2e-4757-9f5f-a522bca883ef
 # ╠═4dc11af3-1eb5-48cb-8a48-faf45be484ae
 # ╟─37121b5f-2746-4d5a-89a4-a72b91a65e33
-# ╠═6feb5d8e-9e89-4ae2-93bb-fb10706f411c
-# ╠═9eee5d0b-8acc-4df5-8155-f7f855a12587
+# ╟─6feb5d8e-9e89-4ae2-93bb-fb10706f411c
+# ╟─9eee5d0b-8acc-4df5-8155-f7f855a12587
+# ╟─b134b497-cbd8-4c8d-a934-8ca593ce1880
+# ╟─d3e5042d-2e1a-4278-b3ee-310c8cc289f8
+# ╟─0b3126f7-18e1-4b38-abdc-92fd94401f23
