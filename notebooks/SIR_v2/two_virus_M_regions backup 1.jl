@@ -85,34 +85,18 @@ begin
 		f = 1
 		[1 b; f 1]
 	end
-	# K_special = let
-	# 	b = .5
-	# 	f = .4
-	# 	[1 b; f 1]
-	# end
-end
-
-# ╔═╡ bb4a3499-958f-4b34-b69c-de2874ae8546
-md"# Figures"
-
-# ╔═╡ 88b4146d-d8bb-4793-bec2-76a4cbc4e320
-Ms
-
-# ╔═╡ d17bc99f-f5cb-49c5-bfe1-e9219b64d19d
-Cs
-
-# ╔═╡ c4da46f5-8178-4ae5-b865-db025a365da0
-K_special = let
-	b = .8
-	f = .6
-	[1 b; f 1]
+	K_special = let
+		b = .5
+		f = .4
+		[1 b; f 1]
+	end
 end
 
 # ╔═╡ a62f2142-7d76-4a15-9566-54115aa98e08
 regions = let
 	S0 = .4
 	I0 = 1e-6
-	C0 = 0
+	C0 = 1e-9
 	v1 = PSS.Virus(; S=S0, I=I0, C=C0) # wt virus
 	v2 = PSS.Virus(; S=S0, I=0, C=0.) # mutant: initially not here
 	
@@ -131,6 +115,15 @@ end;
 
 # ╔═╡ 62c7a1db-42d0-463f-9f3d-954d36f1b1d2
 sol = PSS.simulate(state_init, (0, T/2));
+
+# ╔═╡ bb4a3499-958f-4b34-b69c-de2874ae8546
+md"# Figures"
+
+# ╔═╡ 88b4146d-d8bb-4793-bec2-76a4cbc4e320
+Ms
+
+# ╔═╡ d17bc99f-f5cb-49c5-bfe1-e9219b64d19d
+Cs
 
 # ╔═╡ 87ffd6f9-3b88-46ba-a2a1-a67c67043aa0
 let
@@ -216,11 +209,11 @@ end
 # ╠═78b03821-37d4-4a9d-8ff0-349e12f66686
 # ╠═a62f2142-7d76-4a15-9566-54115aa98e08
 # ╠═fd0d5424-074d-4fee-a41c-a80e61591348
+# ╠═c72f0ae1-e9df-4b88-9629-f471ba9f6e24
 # ╠═62c7a1db-42d0-463f-9f3d-954d36f1b1d2
 # ╟─bb4a3499-958f-4b34-b69c-de2874ae8546
 # ╠═88b4146d-d8bb-4793-bec2-76a4cbc4e320
 # ╠═d17bc99f-f5cb-49c5-bfe1-e9219b64d19d
-# ╠═c4da46f5-8178-4ae5-b865-db025a365da0
 # ╠═87ffd6f9-3b88-46ba-a2a1-a67c67043aa0
 # ╠═add14358-6d60-47a5-876f-8e0651781c57
 # ╠═2e5f1f19-d5f2-4e54-8337-49db178b13c9
